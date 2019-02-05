@@ -12,7 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pbondoer/vim-42header'
 Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-startify'
+"Plugin 'mhinz/vim-startify'
 Plugin 'morhetz/gruvbox'
 Plugin 'sheerun/vim-polyglot'
 
@@ -76,6 +76,14 @@ colorscheme gruvbox
 set background=dark    " Setting dark mode
 "set background=light   " Setting light mode
 let g:gruvbox_contrast_dark='hard'
+
+
+"sessins comand
+":SLoad    load a session
+":SSave    save a session
+":SDelete  delete a session
+":SClose   close current session
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,6 +171,14 @@ map <F6> :!tmux send-keys -t right "make exe" C-m <CR> <CR> k
 :set list lcs=tab:\|\ 
 
 
+"set tab for indentation
+:set noexpandtab
+:set copyindent
+:set preserveindent
+:set softtabstop=0
+:set shiftwidth=4
+:set tabstop=4
+
 " Commenting blocks of code.
 map <C-C> :s:^:\/\/<CR> /laksjfjaj <CR> :w <CR>
 map <C-U> :s:^\/\/<CR> /laksjfjaj <CR> :w <CR>
@@ -178,6 +194,31 @@ set colorcolumn=80
 
 " more powerful backspacing
 set backspace=indent,eol,start
+
+
+"to highlight word when searching
+:set hlsearch
+
+
+
+"folding code
+"set foldmethod=syntax
+
+
+"to remove bizare color sur les indent
+":highlight SpecialKey ctermbg=NONE guibg=NONE
+
+"add newline in normal mode and stay innormal mode
+"nnoremap m o <ESC>
+"nnoremap <S-m> O <ESC> k  :le <CR>
+
+
+"NoMatchParen
+":set noshowmatch
+
+
+
+
 
 
 

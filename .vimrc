@@ -15,33 +15,26 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'mhinz/vim-startify'
 Plugin 'morhetz/gruvbox'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'kien/ctrlp.vim'
+Plugin 'gilligan/vim-lldb'
+Plugin 'vim-airline/vim-airline'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 ""Plugin 'tpope/vim-fugitive'
 
-
-
-
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-
-
-
+""Plugin 'git://git.wincent.com/command-t.git'
 
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
-
-
+""Plugin 'file:///home/gmarik/path/to/plugin'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-
+""Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
@@ -84,8 +77,6 @@ let g:gruvbox_contrast_dark='hard'
 ":SDelete  delete a session
 ":SClose   close current session
 
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "probleme de config avec le nouveau vim
@@ -121,7 +112,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 
 
 "keep cursor on middle
@@ -179,6 +169,8 @@ map <F6> :!tmux send-keys -t right "make exe" C-m <CR> <CR> k
 :set shiftwidth=4
 :set tabstop=4
 
+:set nopaste
+
 " Commenting blocks of code.
 map <C-C> :s:^:\/\/<CR> /laksjfjaj <CR> :w <CR>
 map <C-U> :s:^\/\/<CR> /laksjfjaj <CR> :w <CR>
@@ -215,10 +207,5 @@ set backspace=indent,eol,start
 
 "NoMatchParen
 ":set noshowmatch
-
-
-
-
-
 
 

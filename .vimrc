@@ -18,6 +18,7 @@ Plugin 'sheerun/vim-polyglot'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'gilligan/vim-lldb'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-scripts/ReplaceWithRegister'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -59,7 +60,6 @@ filetype plugin indent on    " required
 "nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
 
-
 "ctags toggle
 set tags=tags
 nmap <F8> :TagbarToggle<CR>
@@ -70,13 +70,11 @@ set background=dark    " Setting dark mode
 "set background=light   " Setting light mode
 let g:gruvbox_contrast_dark='hard'
 
-
 "sessins comand
 ":SLoad    load a session
 ":SSave    save a session
 ":SDelete  delete a session
 ":SClose   close current session
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "probleme de config avec le nouveau vim
@@ -219,5 +217,7 @@ autocmd BufWritePost *.c call system("ctags -R .")
 autocmd BufWritePost *.h   call system("ctags -R .")
 
 
+"add space in normal mode
+:nnoremap <space> i<space><esc>
 
 

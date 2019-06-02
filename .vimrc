@@ -19,6 +19,8 @@ Plugin 'sheerun/vim-polyglot'
 "Plugin 'gilligan/vim-lldb'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -219,5 +221,25 @@ autocmd BufWritePost *.h   call system("ctags -R .")
 
 "add space in normal mode
 :nnoremap <space> i<space><esc>
+
+"to remove omnicompletion scratch window
+set completeopt-=preview
+
+"yank until end of the line
+:nnoremap Y y$
+
+
+"indent whole file and stay at same position
+:nnoremap <F4> gg=G~``
+
+
+
+
+
+
+
+
+
+
 
 

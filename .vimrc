@@ -21,6 +21,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
+Plugin 'tpope/vim-commentary'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -231,15 +232,3 @@ set completeopt-=preview
 
 "indent whole file and stay at same position
 :nnoremap <F4> gg=G~``
-
-
-
-
-
-
-
-
-
-
-
-

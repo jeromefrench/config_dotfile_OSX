@@ -216,8 +216,8 @@ set foldlevelstart=99
 
 
 "generate Ctag each time I save
-autocmd BufWritePost *.c call system("ctags -R .")
-autocmd BufWritePost *.h   call system("ctags -R .")
+autocmd BufWritePost *.c call system("ctags -R ./src/jeronemo")
+autocmd BufWritePost *.h   call system("ctags -R ./src/jeronemo")
 
 
 "add space in normal mode

@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+"filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,6 +23,11 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-entire'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'vim-syntastic/syntastic'
+" Plugin 'ycm-core/YouCompleteMe'
+
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -151,6 +156,7 @@ nnoremap <leader>zz :call VCenterCursor()<CR>
 "macro avec ,
 ", main
 nnoremap ,main :read /Users/jchardin/.vim/main.c <CR>
+nnoremap ,printf :read /Users/jchardin/.vim/printf.c <CR>
 
 
 "show white space
@@ -159,7 +165,7 @@ nnoremap ,main :read /Users/jchardin/.vim/main.c <CR>
 
 
 "tmux send-keys -t 0 \"make\" C-m
-noremap ,f :w<CR>:!tmux send-keys -t left "clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
+noremap ,f :wa<CR>:!tmux send-keys -t right "q & clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
 "noremap ,f :w<CR>
 
 
@@ -223,6 +229,15 @@ autocmd BufWritePost *.h   call system("ctags -R ./src/ ./includes")
 "add space in normal mode
 :nnoremap <space> i<space><esc>
 
+
+"to scroll faster in middle
+:nnoremap L Lzz
+:nnoremap H Hzz
+
+
+
+
+
 "to remove omnicompletion scratch window
 set completeopt-=preview
 
@@ -232,3 +247,17 @@ set completeopt-=preview
 
 "indent whole file and stay at same position
 :nnoremap <F4> gg=G~``
+
+
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+

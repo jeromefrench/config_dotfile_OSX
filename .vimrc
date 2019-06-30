@@ -165,7 +165,7 @@ nnoremap ,printf :read /Users/jchardin/.vim/printf.c <CR>
 
 
 "tmux send-keys -t 0 \"make\" C-m
-noremap ,f :wa<CR>:!tmux send-keys -t right "q & clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
+noremap ,f :wa<CR> :!tmux send-keys -t right "q & clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
 "noremap ,f :w<CR>
 
 
@@ -249,15 +249,7 @@ set completeopt-=preview
 :nnoremap <F4> gg=G~``
 
 
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-
+"automatic save when ctrl t ctag back
+nnoremap <c-t> :w<CR><c-t>zz
+nnoremap <c-}> :w<CR><c-}>zz
 

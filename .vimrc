@@ -231,8 +231,8 @@ autocmd BufWritePost *.h   call system("ctags -R ./src/ ./includes")
 
 
 "to scroll faster in middle
-:nnoremap L Lzz
-:nnoremap H Hzz
+nnoremap L Lzz
+nnoremap H Hzz
 
 
 

@@ -230,13 +230,6 @@ autocmd BufWritePost *.h   call system("ctags -R ./src/jeronemo")
 :nnoremap <space> i<space><esc>
 
 
-"to scroll faster in middle
-:nnoremap L Lzz
-:nnoremap H Hzz
-
-
-
-
 
 "to remove omnicompletion scratch window
 set completeopt-=preview
@@ -252,4 +245,8 @@ set completeopt-=preview
 "automatic save when ctrl t ctag back
 nnoremap <c-t> :w<CR><c-t>zz
 nnoremap <c-}> :w<CR><c-}>zz
+
+"to scroll faster in middle
+
+
 

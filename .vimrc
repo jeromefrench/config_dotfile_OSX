@@ -25,6 +25,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'kana/vim-textobj-function'
+Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'ycm-core/YouCompleteMe'
 
@@ -165,7 +167,7 @@ nnoremap ,printf :read /Users/jchardin/.vim/printf.c <CR>
 
 
 "tmux send-keys -t 0 \"make\" C-m
-noremap ,f :wa<CR> :!tmux send-keys -t right "q & clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
+noremap ,f :wa<CR> :!tmux send-keys -t right "q & pkill -9 doom &  clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
 "noremap ,f :w<CR>
 
 
@@ -231,10 +233,11 @@ autocmd BufWritePost *.h   call system("ctags -R ./src/ ./includes")
 
 
 "to scroll faster in middle
-nnoremap L Lzz
-nnoremap H Hzz
+nnoremap L 3jzz
+nnoremap H 3kzz
 
 
+nnoremap ,<space> :noh<cr>
 
 
 
@@ -250,6 +253,13 @@ set completeopt-=preview
 
 
 "automatic save when ctrl t ctag back
-nnoremap <c-t> :w<CR><c-t>zz
-nnoremap <c-}> :w<CR><c-}>zz
+nnoremap <C-t> :w<CR><C-t>zz
+nnoremap <C-}> :w<CR><C-}>zz
+
+
+
+:imap "" ""jji
+:imap (( ()jji
+:imap '' ''jji
+
 

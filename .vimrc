@@ -25,6 +25,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'kana/vim-textobj-function'
+Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'ycm-core/YouCompleteMe'
 
@@ -230,6 +232,14 @@ autocmd BufWritePost *.h   call system("ctags -R ./src/jeronemo")
 :nnoremap <space> i<space><esc>
 
 
+"to scroll faster in middle
+nnoremap L 3jzz
+nnoremap H 3kzz
+
+
+nnoremap ,<space> :noh<cr>
+
+
 
 "to remove omnicompletion scratch window
 set completeopt-=preview
@@ -243,8 +253,15 @@ set completeopt-=preview
 
 
 "automatic save when ctrl t ctag back
-nnoremap <c-t> :w<CR><c-t>zz
-nnoremap <c-}> :w<CR><c-}>zz
+nnoremap <C-t> :w<CR><C-t>zz
+nnoremap <C-}> :w<CR><C-}>zz
+
+
+
+:imap "" ""jji
+:imap (( ()jji
+:imap '' ''jji
+
 
 "to scroll faster in middle
 

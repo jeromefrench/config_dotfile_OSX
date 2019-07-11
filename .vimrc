@@ -167,7 +167,17 @@ nnoremap ,printf :read /Users/jchardin/.vim/printf.c <CR>
 
 
 "tmux send-keys -t 0 \"make\" C-m
-noremap ,f :wa<CR> :!tmux send-keys -t right "q & pkill -9 doom &  clear & clear && make && ./doom doom_engine" C-m <CR> <CR> k
+noremap ,f k:wa<CR> :!tmux send-keys -t right "q & pkill -9 doom &  clear & clear && make && ./doom" C-m <CR> <CR> k
+
+noremap ,s :!tmux send-keys -t right "clear & clear & git status"  C-m <CR> <CR> k
+noremap ,a :!tmux send-keys -t right "clear & clear & git add -A"  C-m <CR> <CR> k
+noremap ,c :!tmux send-keys -t right "git commit -am "ok"  "  C-m <CR> <CR> k
+noremap ,p :!tmux send-keys -t right "git push"  C-m <CR> <CR> k
+
+
+
+
+
 "noremap ,f :w<CR>
 
 
@@ -253,13 +263,17 @@ set completeopt-=preview
 
 
 "automatic save when ctrl t ctag back
-nnoremap <C-t> :w<CR><C-t>zz
-nnoremap <C-}> :w<CR><C-}>zz
+:nnoremap <C-t> :w<CR><C-t>zz
+:nnoremap <C-]> :w<CR><C-]>zz
 
 
 
 :imap "" ""jji
 :imap (( ()jji
 :imap '' ''jji
+
+nnoremap <Left>x <C-x>
+nnoremap <Left>a <C-a>
+
 
 

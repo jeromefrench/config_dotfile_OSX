@@ -29,6 +29,7 @@ Plugin 'kana/vim-textobj-function'
 Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'ycm-core/YouCompleteMe'
+Plugin 'tpope/vim-unimpaired'
 
 
 " The following are examples of different formats supported.

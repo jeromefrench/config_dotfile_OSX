@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'pbondoer/vim-42header'
 Plugin 'majutsushi/tagbar'
 "Plugin 'mhinz/vim-startify'
@@ -129,30 +129,29 @@ nnoremap <C-W>. <C-W>>
 
 
 "keep cursor on middle
-set scrolloff=25
-if !exists('*VCenterCursor')
-  augroup VCenterCursor
-  au!
-  au OptionSet *,*.*
-    \ if and( expand("<amatch>")=='scrolloff' ,
-    \         exists('#VCenterCursor#WinEnter,WinNew,VimResized') )|
-    \   au! VCenterCursor WinEnter,WinNew,VimResized|
-    \ endif
-  augroup END
-  function VCenterCursor()
-    if !exists('#VCenterCursor#WinEnter,WinNew,VimResized')
-      let s:default_scrolloff=&scrolloff
-      let &scrolloff=winheight(win_getid())/2
-      au VCenterCursor WinEnter,WinNew,VimResized *,*.*
-        \ let &scrolloff=winheight(win_getid())/2
-    else
-      au! VCenterCursor WinEnter,WinNew,VimResized
-      let &scrolloff=s:default_scrolloff
-    endif
-  endfunction
-endif
-
-nnoremap <leader>zz :call VCenterCursor()<CR>
+" set scrolloff=25
+" if !exists('*VCenterCursor')
+"   augroup VCenterCursor
+"   au!
+"   au OptionSet *,*.*
+"     \ if and( expand("<amatch>")=='scrolloff' ,
+"     \         exists('#VCenterCursor#WinEnter,WinNew,VimResized') )|
+"     \   au! VCenterCursor WinEnter,WinNew,VimResized|
+"     \ endif
+"   augroup END
+"   function VCenterCursor()
+"     if !exists('#VCenterCursor#WinEnter,WinNew,VimResized')
+"       let s:default_scrolloff=&scrolloff
+"       let &scrolloff=winheight(win_getid())/2
+"       au VCenterCursor WinEnter,WinNew,VimResized *,*.*
+"         \ let &scrolloff=winheight(win_getid())/2
+"     else
+"       au! VCenterCursor WinEnter,WinNew,VimResized
+"       let &scrolloff=s:default_scrolloff
+"     endif
+"   endfunction
+" endif
+" nnoremap <leader>zz :call VCenterCursor()<CR>
 
 
 
@@ -168,7 +167,11 @@ nnoremap ,printf :read /Users/jchardin/.vim/printf.c <CR>
 
 
 "tmux send-keys -t 0 \"make\" C-m
-noremap ,f k:wa<CR> :!tmux send-keys -t right "q & pkill -9 doom &  clear & clear && make && ./doom" C-m <CR> <CR> k
+nmap ,f k:wa<CR>:!tmux send-keys -t 2 "pkill -9 doom" C-m<CR><CR>k
+nmap ,g :!tmux send-keys -t left "clear && make && ./doom" C-m<CR><CR><CR>k
+
+
+
 
 noremap ,s :!tmux send-keys -t right "clear & clear & git status"  C-m <CR> <CR> k
 noremap ,a :!tmux send-keys -t right "clear & clear & git add -A"  C-m <CR> <CR> k
@@ -235,8 +238,8 @@ set foldlevelstart=99
 
 
 "generate Ctag each time I save
-autocmd BufWritePost *.c call system("ctags -R ./src/jeronemo")
-autocmd BufWritePost *.h   call system("ctags -R ./src/jeronemo")
+autocmd BufWritePost *.c call system("ctags -R ./src/jeronemo ./includes")
+autocmd BufWritePost *.h   call system("ctags -R ./includes")
 
 
 "add space in normal mode
@@ -271,10 +274,9 @@ set completeopt-=preview
 
 :imap "" ""jji
 :imap (( ()jji
-:imap '' ''jji
+" :imap '' ''jji
+:imap echo echo '';jjhi
 
-nnoremap <Left>x <C-x>
-nnoremap <Left>a <C-a>
 
 
 
@@ -282,3 +284,20 @@ nnoremap <Left>a <C-a>
 
 
 
+"remap left arrow to control for common usage
+nnoremap <Left>x <C-x>
+"increment
+nnoremap <Left>a <C-a>
+"decrment
+noremap <Left>t <C-t>
+"tag jumping back
+
+nnoremap <Left>e <C-e>
+
+
+"regle un probleme
+autocmd BufRead scp://* :set bt=acwrite
+
+
+"matching bracket
+runtime macros/matchit.vim

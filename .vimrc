@@ -1,4 +1,14 @@
+
+" use :botright split or :bo sp, it does what you want
+
+
+
+
+
+
 set nocompatible              " be iMproved, required
+
+
 "filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -9,27 +19,27 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'scrooloose/nerdtree'
 Plugin 'pbondoer/vim-42header'
 Plugin 'majutsushi/tagbar'
-"Plugin 'mhinz/vim-startify'
 Plugin 'morhetz/gruvbox'
 Plugin 'sheerun/vim-polyglot'
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'gilligan/vim-lldb'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
-Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-entire'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'kana/vim-textobj-function'
-Plugin 'easymotion/vim-easymotion'
+Plugin 'tkhren/vim-textobj-numeral'
+Plugin 'vim-scripts/ReplaceWithRegister'
+" Plugin 'kien/ctrlp.vim'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'easymotion/vim-easymotion'
 " Plugin 'vim-syntastic/syntastic'
 " Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'gilligan/vim-lldb'
+" Plugin 'mhinz/vim-startify'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 
 
 " The following are examples of different formats supported.
@@ -70,7 +80,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "nerdtree toggle
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 
 "ctags toggle
 set tags=tags
@@ -80,7 +90,9 @@ nmap <F8> :TagbarToggle<CR>
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 "set background=light   " Setting light mode
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='soft'
+
+
 
 "sessins comand
 ":SLoad    load a session
@@ -96,7 +108,7 @@ let g:loaded_matchparen=1
 set clipboard=unnamed
 
 "jj for echap
-:imap jj <Esc>
+" :imap jj <Esc>
 :imap jk <Esc>
 
 "put synthasic color
@@ -171,19 +183,12 @@ nmap ,f k:wa<CR>:!tmux send-keys -t 2 "pkill -9 doom" C-m<CR><CR>k
 nmap ,g :!tmux send-keys -t left "clear && make && ./doom" C-m<CR><CR><CR>k
 
 
-
-
 noremap ,s :!tmux send-keys -t right "clear & clear & git status"  C-m <CR> <CR> k
 noremap ,a :!tmux send-keys -t right "clear & clear & git add -A"  C-m <CR> <CR> k
 noremap ,c :!tmux send-keys -t right "git commit -am "ok"  "  C-m <CR> <CR> k
 noremap ,p :!tmux send-keys -t right "git push"  C-m <CR> <CR> k
 
-
-
-
-
 "noremap ,f :w<CR>
-
 
 map <F6> :!tmux send-keys -t right "make exe" C-m <CR> <CR> k
 
@@ -239,7 +244,7 @@ set foldlevelstart=99
 
 "generate Ctag each time I save
 autocmd BufWritePost *.c call system("ctags -R ./src/jeronemo ./includes")
-autocmd BufWritePost *.h   call system("ctags -R ./includes")
+autocmd BufWritePost *.h call system("ctags -R ./includes")
 
 
 "add space in normal mode
@@ -272,12 +277,11 @@ set completeopt-=preview
 
 
 
-:imap "" ""jji
-:imap (( ()jji
-" :imap '' ''jji
-:imap echo echo '';jjhi
+:imap "" ""<esc>i
+:imap (( ()<esc>i
+" :imap '' ''<esc>i
 
-
+:imap {{ {<cr>}<esc>ko
 
 
 "to scroll faster in middle
@@ -293,6 +297,13 @@ noremap <Left>t <C-t>
 "tag jumping back
 
 nnoremap <Left>e <C-e>
+"pour sortire des parenthese  ctr o permet de rnetrer normal mode pour une commande
+inoremap <S-Tab> <C-o>A
+
+
+"hightlight the current match
+nnoremap * *N
+
 
 
 "regle un probleme
@@ -301,3 +312,12 @@ autocmd BufRead scp://* :set bt=acwrite
 
 "matching bracket
 runtime macros/matchit.vim
+
+
+"get out of bracket
+imap bb <esc>%%a
+
+
+cnoremap w silent!w
+cnoremap wa silent!wa
+

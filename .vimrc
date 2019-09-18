@@ -1,14 +1,7 @@
 
 " use :botright split or :bo sp, it does what you want
 
-
-
-
-
-
 set nocompatible              " be iMproved, required
-
-
 "filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -20,10 +13,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'pbondoer/vim-42header'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 Plugin 'morhetz/gruvbox'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
@@ -37,9 +30,11 @@ Plugin 'vim-scripts/ReplaceWithRegister'
 " Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'gilligan/vim-lldb'
 " Plugin 'mhinz/vim-startify'
-Plugin 'tpope/vim-fugitive'
+" pour git
+" Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 
 
 " The following are examples of different formats supported.
@@ -125,45 +120,11 @@ syntax enable
 :augroup END
 
 
-"line under current line
-:set cursorline
-
-
-"We can use different key mappings for easy navigation between splits to save a keystroke. So instead of ctrl-w then j, it’s just ctrl-j:
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 "moving split
 nnoremap <C-W>, <C-W><
 nnoremap <C-W>. <C-W>>
 
-
-"keep cursor on middle
-" set scrolloff=25
-" if !exists('*VCenterCursor')
-"   augroup VCenterCursor
-"   au!
-"   au OptionSet *,*.*
-"     \ if and( expand("<amatch>")=='scrolloff' ,
-"     \         exists('#VCenterCursor#WinEnter,WinNew,VimResized') )|
-"     \   au! VCenterCursor WinEnter,WinNew,VimResized|
-"     \ endif
-"   augroup END
-"   function VCenterCursor()
-"     if !exists('#VCenterCursor#WinEnter,WinNew,VimResized')
-"       let s:default_scrolloff=&scrolloff
-"       let &scrolloff=winheight(win_getid())/2
-"       au VCenterCursor WinEnter,WinNew,VimResized *,*.*
-"         \ let &scrolloff=winheight(win_getid())/2
-"     else
-"       au! VCenterCursor WinEnter,WinNew,VimResized
-"       let &scrolloff=s:default_scrolloff
-"     endif
-"   endfunction
-" endif
-" nnoremap <leader>zz :call VCenterCursor()<CR>
 
 
 
@@ -208,116 +169,80 @@ map <F6> :!tmux send-keys -t right "make exe" C-m <CR> <CR> k
 :set nopaste
 
 
-"disable auto comment on new line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
+"############################Configuration
 "set line at 80
 set colorcolumn=80
-
-
 " more powerful backspacing
 set backspace=indent,eol,start
-
-
 "to highlight word when searching
 :set hlsearch
-
-
-
 "folding code  zc to fold zo to unfold
 set foldmethod=syntax
 set foldlevelstart=99
-
-
-"to remove bizare color sur les indent
-":highlight SpecialKey ctermbg=NONE guibg=NONE
-
-"add newline in normal mode and stay innormal mode
-"nnoremap m o <ESC>
-"nnoremap <S-m> O <ESC> k  :le <CR>
-
-
-"NoMatchParen
-":set noshowmatch
-
-
+"disable auto comment on new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "generate Ctag each time I save
 autocmd BufWritePost *.c call system("ctags -R ./src/jeronemo ./includes")
 autocmd BufWritePost *.h call system("ctags -R ./includes")
-
-
-"add space in normal mode
-:nnoremap <space> i<space><esc>
-
-
-"to scroll faster in middle
-nnoremap L 3jzz
-nnoremap H 3kzz
-
-
-nnoremap ,<space> :noh<cr>
-
-
-
+"line under current line
+:set cursorline
 "to remove omnicompletion scratch window
 set completeopt-=preview
-
-"yank until end of the line
-:nnoremap Y y$
-
-
-"indent whole file and stay at same position
-:nnoremap <F4> gg=G~``
-
-
-"automatic save when ctrl t ctag back
-:nnoremap <C-t> :w<CR><C-t>zz
-:nnoremap <C-]> :w<CR><C-]>zz
+"hightlight the current match
+nnoremap * *N
+"regle un probleme
+autocmd BufRead scp://* :set bt=acwrite
+"matching bracket
+runtime macros/matchit.vim
 
 
-
-:imap "" ""<esc>i
-:imap (( ()<esc>i
-" :imap '' ''<esc>i
-
-:imap {{ {<cr>}<esc>ko
-
-
-"to scroll faster in middle
-
-
-
+"################################Ssnipet
+"get out of bracket
+imap bb <esc>l%%a
+imap ,b <esc>f"a
+"pour sortire des parenthese  ctr o permet de rnetrer normal mode pour une commande
+inoremap <S-Tab> <C-o>A
+"tag jumping back
+nnoremap <Left>e <C-e>
 "remap left arrow to control for common usage
 nnoremap <Left>x <C-x>
 "increment
 nnoremap <Left>a <C-a>
 "decrment
 noremap <Left>t <C-t>
-"tag jumping back
-
-nnoremap <Left>e <C-e>
-"pour sortire des parenthese  ctr o permet de rnetrer normal mode pour une commande
-inoremap <S-Tab> <C-o>A
-
-
-"hightlight the current match
-nnoremap * *N
-
-
-
-"regle un probleme
-autocmd BufRead scp://* :set bt=acwrite
-
-
-"matching bracket
-runtime macros/matchit.vim
-
-
-"get out of bracket
-imap bb <esc>%%a
+"brackeet
+:inoremap "" ""<esc>i
+:inoremap (( ()<esc>i
+:inoremap '' ''<esc>i
+:inoremap [[ []<esc>i
+:inoremap ,( ();<esc>h
+"add space in normal mode
+:nnoremap <space> i<space><esc>
+"yank until end of the line
+:nnoremap Y y$
+:imap {{ {<cr>}<esc>ko
+"automatic save when ctrl t ctag back
+:nnoremap <C-t> :w<CR><C-t>zz
+:nnoremap <C-]> :w<CR><C-]>zz
+"remove hightlight
+nnoremap ,<space> :noh<cr>
 
 
 cnoremap w silent!w
 cnoremap wa silent!wa
+
+
+
+
+
+
+
+
+"underscrore a s key boundary
+:set iskeyword-=_
+
+
+
 
